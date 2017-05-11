@@ -1,0 +1,81 @@
+1.
+SELECT name, initials from players
+WHERE name = 'Parmenter'
+AND initials = 'R'
+
+name	initials
+Parmenter	R
+
+2.
+SELECT paymentno, amount, penalties.playerno, name 
+FROM penalties, players
+WHERE penalties.playerno = players.playerno
+
+paymentno	amount	playerno	name
+1	100	6	Parmenter
+2	75	44	Baker
+3	100	27	Collins
+4	50	104	Moorman
+5	25	44	Baker
+6	25	8	Newcastle
+7	30	44	Baker
+8	75	27	Collins
+
+3.
+SELECT DISTINCT P.PLAYERNO, M.TEAMNO 
+
+FROM PLAYERS AS P 
+
+LEFT OUTER JOIN MATCHES 
+
+AS M ON P.PLAYERNO = M.PLAYERNO 
+
+PLAYERNO	TEAMNO
+6	1
+44	1
+83	1
+2	1
+57	1
+8	1
+27	2
+104	2
+112	2
+8	2
+7	0
+28	0
+39	0
+95	0
+100	0
+
+4.
+SELECT DISTINCT playerno
+
+FROM matches
+
+WHERE won> 0
+
+playerno
+6
+44
+2
+57
+27
+104
+112
+
+5.
+SELECT   paymentno
+ 
+FROM     PENALTIES 
+ 
+WHERE   playerno IN
+ 
+(SELECT playerno
+ 
+FROM players
+ 
+WHERE year(birth_date) >1965)
+
+
+paymentno
+4

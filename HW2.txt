@@ -1,0 +1,93 @@
+1.
+SELECT count(*), max(amount)
+
+FROM penalties
+
+count(*)	max(amount)
+8	100
+
+
+2.
+SELECT   distinct PLAYERNO, 
+
+(SELECT   MAX(AMOUNT)- MIN(AMOUNT) 
+
+FROM     PENALTIES 
+
+WHERE    PENALTIES.PLAYERNO = PLAYERS.PLAYERNO) 
+
+FROM     PLAYERS
+
+2	0
+6	0
+7	0
+8	0
+27	25
+28	0
+39	0
+44	50
+57	0
+83	0
+95	0
+100	0
+104	0
+112	0
+
+3.
+SELECT teamno, sum(won), count(*) 
+
+FROM matches
+
+WHERE teamno IN 
+
+(SELECT teamno 
+FROM teams
+
+WHERE division = 'first')
+
+teamno	sum(won)	count(*)
+1	15	8
+
+4.
+SELECT name, initials 
+
+FROM players
+
+WHERE playerno IN
+
+(select playerno 
+
+from penalties
+
+where amount >40
+
+group by PLAYERNO
+
+having count(*)>=2)
+
+name	initials
+Collins	DD
+
+5.
+(SELECT matchno
+
+FROM matches
+
+order by matchno asc limit 2)
+
+union
+
+(SELECT matchno
+
+FROM matches
+
+order by matchno desc limit 2)
+
+matchno
+1
+2
+13
+12
+
+
+

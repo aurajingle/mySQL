@@ -1,0 +1,55 @@
+select * from country;
+idCountry	Country
+BR	Brazil
+CH	Chile
+FR	France
+GE	Germany
+IC	Iceland
+LE	Lesotho
+NI	Nicaragua
+PNG	Papua New Guinea
+SL	Saint Lucia
+SW	Sweden
+
+select * from people;
+idPeople	name	email
+1	Carley Bahringer	Carley_Bahringer@destiny.com
+2	Patricia Fadel	Patricia_Fadel@avis.com
+3	Sedrick Kuphal	Sedrick@godfrey.ca
+4	Briana Berge	Briana_Berge@axel.ca
+5	Lucy Lockman	Lucy_Lockman@abby.org
+6	Ayden Flatley	Ayden_Flatley@colin.biz
+7	Alec Boyle	Alec.Boyle@aurore.co.uk
+8	Ozella Feil	Ozella_Feil@prudence.ca
+
+select * from registration;
+idRegistration	idCountry	idPeople	Reg_Time
+1	PNG	1	1987-10-03 22:09:54
+2	SL	2	2012-05-10 11:07:49
+3	CH	3	2007-11-12 00:09:53
+4	NI	4	2006-03-26 15:32:08
+5	IC	5	2014-02-13 10:26:57
+6	GE	5	1999-02-12 00:14:54
+7	FR	6	1987-01-23 21:43:22
+8	BR	7	2007-08-23 13:42:41
+9	LE	8	2005-12-30 18:24:59
+10	SW	8	2009-06-19 10:32:55
+
+describe country;
+Field	Type	Null	Key	Default	Extra
+idCountry	varchar(45)	NO	PRI		
+Country	varchar(45)	NO			
+
+describe people;
+Field	Type	Null	Key	Default	Extra
+idPeople	int(11)	NO	PRI		
+name	varchar(45)	NO			
+email	varchar(45)	NO	
+
+describe registration;
+Field	Type	Null	Key	Default	Extra
+idRegistration	int(11)	NO	PRI		
+idCountry	varchar(45)	NO			
+idPeople	int(11)	NO			
+Reg_Time	datetime	NO			
+		
